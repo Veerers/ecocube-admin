@@ -14,7 +14,8 @@
             'jquery': '../bower_components/jquery/jquery',
             'knockout': '../bower_components/knockout.js/knockout',
             'lodash': '../bower_components/lodash/dist/lodash.compat',
-            'q': '../bower_components/q/q'
+            'q': '../bower_components/q/q',
+            'summernote': '../bower_components/summernote/dist/summernote'
         },
         shim: {
             'bootstrap': ['jquery']
@@ -28,6 +29,9 @@
         var binder = require('durandal/binder');
         var $ = require('jquery');
         var q = require('q');
+
+        var bootstrap = require('bootstrap');
+        var summernote = require('summernote');
 
         //>>excludeStart("build", true);
         system.debug(true);

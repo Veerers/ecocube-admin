@@ -4,8 +4,22 @@ define(function(require) {
     'use strict';
     var _ = require('lodash');
     var ko = require('knockout');
+    var $ = require('jquery');
 
-    var source = ko.observable();
+    ko.bindingHandlers.summernote = {
+        init: function (element, valueAccessor, allBindingsAccessor) {
+            var options = valueAccessor();
+            var binding = ko.utils.unwrapObservable(allBindingsAccessor()).value;
+
+            var updateObservable = function(e) {
+                binding(e.currentTarget.innerHTML);
+            };
+
+            options.onkeydown = options.onkeyup = options.onfocus = options.onblur = updateObservable;
+
+            $(element).summernote(options);
+        }
+    };
 
     var Media = (function() {
         function Class(data) {
@@ -96,10 +110,10 @@ define(function(require) {
             this.page = ko.observable(new Page({}));
             this.source = ko.computed({
                 read: function() {
-                    return this.page().toJSON();
+                    return this.page().toJSON().replace(/(?:"_id":)(".*?")/, '"_id":ObjectId($1)');
                 }.bind(this),
                 write: function(newValue) {
-                    var newValueJS = JSON.parse(newValue);
+                    var newValueJS = JSON.parse(newValue.replace(/ObjectId\((\".*?\")\)/, '$1'));
                     this.page(new Page(newValueJS));
                 }.bind(this)
             })

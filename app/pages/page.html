@@ -2,61 +2,67 @@
     <div class="form-group">
         <label class="control-label">Код</label>
         <div class="controls">
-            <textarea class="form-control"></textarea>
+            <textarea class="form-control" data-bind="textInput: source"></textarea>
         </div>
     </div>
     <hr>
+    <!-- ko with: page -->
     <div class="form-group">
         <label class="control-label">Заголовок</label>
         <div class="controls">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" data-bind="textInput: title">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label">Категория</label>
         <div class="controls">
-            <select class="form-control"></select>
+            <select class="form-control" data-bind="options: categories, value: category, optionsCaption: 'Выберите категорию...' "></select>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label">Статьи</label>
-        <div>
+        <div data-bind="foreach: articles">
             <div class="well">
                 <div class="form-group">
                     <label class="control-label">Подзаголовок</label>
                     <div class="controls">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" data-bind="textInput: title">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Текст</label>
                     <div class="controls">
-                        <textarea class="form-control"></textarea>
+                        <textarea class="form-control summernote" data-bind="value: text, summernote: {}"></textarea>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">Медиа
                     </div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label class="control-label">id</label>
-                            <div class="controls">
-                                <input type="text" class="form-control">
+                    <ul class="list-group" data-bind="foreach: media">
+                        <li class="list-group-item">
+                            <div class="form-group">
+                                <label class="control-label">id</label>
+                                <div class="controls">
+                                    <input type="text" class="form-control" data-bind="textInput: id">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Тип</label>
-                            <div class="controls">
-                                <select class="form-control"></select>
+                            <div class="form-group">
+                                <label class="control-label">Тип</label>
+                                <div class="controls">
+                                    <select class="form-control" data-bind="options: types, value: type, optionsCaption: 'Выберите тип...' "></select>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            <a class="btn btn-danger" data-bind="click: $parent.removeMedia.bind($parent, $data)">Удалить медиа</a>
+                        </li>
+                    </ul>
                     <div class="panel-footer">
-                        <a class="btn btn-danger">Удалить медиа</a>
+                        <a class="btn btn-primary" data-bind="click: addMedia">Добавить медиа</a>
                     </div>
                 </div>
-                <a class="btn btn-danger">Удалить статью</a>
+                <a class="btn btn-danger" data-bind="click: $parent.removeArticle.bind($parent, $data)">Удалить статью</a>
             </div>
         </div>
+        <a class="btn btn-primary" data-bind="click: addArticle">Добавить статью</a>
     </div>
+    <!-- /ko -->
 </div>

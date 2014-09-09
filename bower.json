@@ -4,16 +4,18 @@
   "resolutions": {
     "requirejs": "~2.1.15",
     "requirejs-text": "~2.0.12",
-    "jquery": "~1.9.1"
+    "jquery": "~1.9.1",
+    "knockout.js": "3.2.0"
   },
   "dependencies": {
     "durandal": "~2.1.0",
     "jquery": "~2.1.1",
-    "knockout.js": "kmalakoff/knockout",
+    "knockout.js": "kmalakoff/knockout#3.2.0",
     "lodash": "~2.4.1",
     "q": "1",
     "requirejs": "~2.1.15",
     "requirejs-text": "~2.0.12",
-    "bootstrap": "~3.2.0"
+    "bootstrap": "~3.2.0",
+    "summernote": "~0.5.8"
   }
 }
