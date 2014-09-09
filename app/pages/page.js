@@ -43,6 +43,14 @@ define(function(require) {
             };
         };
 
+        Class.prototype.addMedia = function () {
+            this.media.push(new Media({}));
+        };
+
+        Class.prototype.removeMedia = function (media) {
+            this.media.remove(media);
+        };
+
         return Class;
     }());
 
@@ -70,6 +78,14 @@ define(function(require) {
 
         Class.prototype.toJSON = function() {
             return JSON.stringify(this.toJS());
+        };
+
+        Class.prototype.addArticle = function () {
+            this.articles.push(new Article({}));
+        };
+
+        Class.prototype.removeArticle = function (article) {
+            this.articles.remove(article);
         };
 
         return Class;
