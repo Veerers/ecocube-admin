@@ -7,7 +7,7 @@ define(function(require) {
     var $ = require('jquery');
 
     ko.bindingHandlers.summernote = {
-        init: function (element, valueAccessor, allBindingsAccessor) {
+        init: function(element, valueAccessor, allBindingsAccessor) {
             var options = valueAccessor();
             var binding = ko.utils.unwrapObservable(allBindingsAccessor()).value;
 
@@ -24,14 +24,16 @@ define(function(require) {
     var Media = (function() {
         function Class(data) {
             this.type = ko.observable(data.type);
-            this.types = ['image', 'video'];
+            this.types = ['image', 'video', 'file'];
             this.id = ko.observable(data.id);
+            this.name = ko.observable();
         }
 
         Class.prototype.toJS = function() {
             return {
                 type: this.type(),
-                id: this.id()
+                id: this.id(),
+                name: this.name()
             }
         };
 
@@ -57,11 +59,11 @@ define(function(require) {
             };
         };
 
-        Class.prototype.addMedia = function () {
+        Class.prototype.addMedia = function() {
             this.media.push(new Media({}));
         };
 
-        Class.prototype.removeMedia = function (media) {
+        Class.prototype.removeMedia = function(media) {
             this.media.remove(media);
         };
 
@@ -94,11 +96,11 @@ define(function(require) {
             return JSON.stringify(this.toJS());
         };
 
-        Class.prototype.addArticle = function () {
+        Class.prototype.addArticle = function() {
             this.articles.push(new Article({}));
         };
 
-        Class.prototype.removeArticle = function (article) {
+        Class.prototype.removeArticle = function(article) {
             this.articles.remove(article);
         };
 
