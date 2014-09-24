@@ -24,7 +24,7 @@ define(function(require) {
     var Media = (function() {
         function Class(data) {
             this.type = ko.observable(data.type);
-            this.types = ['image', 'video', 'file'];
+            this.types = ['image', 'video', 'file', 'gallery'];
             this.id = ko.observable(data.id);
             this.name = ko.observable();
         }

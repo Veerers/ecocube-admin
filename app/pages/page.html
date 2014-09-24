@@ -41,22 +41,32 @@
                     <ul class="list-group" data-bind="foreach: media">
                         <li class="list-group-item">
                             <div class="form-group">
-                                <label class="control-label" data-bind="text: type() === 'file' ? 'url' : 'id' "></label>
-                                <div class="controls">
-                                    <input type="text" class="form-control" data-bind="textInput: id">
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label class="control-label">Тип</label>
                                 <div class="controls">
                                     <select class="form-control" data-bind="options: types, value: type, optionsCaption: 'Выберите тип...' "></select>
                                 </div>
                             </div>
+                            <!-- ko if: type() && type() !== 'gallery' -->
+                            <div class="form-group">
+                                <label class="control-label" data-bind="text: type() === 'file' ? 'url' : 'id' "></label>
+                                <div class="controls">
+                                    <input type="text" class="form-control" data-bind="textInput: id">
+                                </div>
+                            </div>
+                            <!-- /ko -->
                             <!-- ko if: type() === 'file' -->
                             <div class="form-group">
                                 <label class="control-label">Название</label>
                                 <div class="controls">
                                     <input type="text" class="form-control" data-bind="textInput: name">
+                                </div>
+                            </div>
+                            <!-- /ko -->
+                            <!-- ko if: type() === 'gallery' -->
+                            <div class="form-group">
+                                <label class="control-label">Ссылки (как в image)</label>
+                                <div class="controls">
+                                    <textarea class="form-control" data-bind="textInput: id"></textarea>
                                 </div>
                             </div>
                             <!-- /ko -->
