@@ -107,7 +107,7 @@ define(function(require) {
 
         Class.prototype.addArticleBefore = function (article) {
             var i = this.articles.indexOf(article);
-            this.articles.splice(i - 1, 0, new Article({}));
+            this.articles.splice(i, 0, new Article({}));
         };
 
         Class.prototype.removeArticle = function(article) {
