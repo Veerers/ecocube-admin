@@ -22,6 +22,7 @@
     <div class="form-group">
         <label class="control-label">Статьи</label>
         <div data-bind="foreach: articles">
+            <a class="btn btn-primary" data-bind="click: $parent.addArticleBefore.bind($parent, $data)">Добавить статью</a>
             <div class="well">
                 <div class="form-group">
                     <label class="control-label">Подзаголовок</label>
@@ -39,6 +40,9 @@
                     <div class="panel-heading">Медиа
                     </div>
                     <ul class="list-group" data-bind="foreach: media">
+                        <li class="list-group-item">
+                            <a class="btn btn-primary" data-bind="click: $parent.addMediaBefore.bind($parent, $data)">Добавить медиа</a>
+                        </li>
                         <li class="list-group-item">
                             <div class="form-group">
                                 <label class="control-label">Тип</label>

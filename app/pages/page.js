@@ -34,7 +34,7 @@ define(function(require) {
                 type: this.type(),
                 id: this.id(),
                 name: this.name()
-            }
+            };
         };
 
         return Class;
@@ -61,6 +61,11 @@ define(function(require) {
 
         Class.prototype.addMedia = function() {
             this.media.push(new Media({}));
+        };
+
+        Class.prototype.addMediaBefore = function (media) {
+            var i = this.media.indexOf(media);
+            this.media.splice(i, 0, new Media({}));
         };
 
         Class.prototype.removeMedia = function(media) {
@@ -100,6 +105,11 @@ define(function(require) {
             this.articles.push(new Article({}));
         };
 
+        Class.prototype.addArticleBefore = function (article) {
+            var i = this.articles.indexOf(article);
+            this.articles.splice(i - 1, 0, new Article({}));
+        };
+
         Class.prototype.removeArticle = function(article) {
             this.articles.remove(article);
         };
@@ -118,7 +128,7 @@ define(function(require) {
                     var newValueJS = JSON.parse(newValue.replace(/ObjectId\((\".*?\")\)/, '$1'));
                     this.page(new Page(newValueJS));
                 }.bind(this)
-            })
+            });
         }
 
         return Class;
